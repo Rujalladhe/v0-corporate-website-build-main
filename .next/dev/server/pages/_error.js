@@ -1,8 +1,0 @@
-var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/pages/_error.js")
-R.c("server/chunks/ssr/f442c_14c4a726._.js")
-R.c("server/chunks/ssr/[externals]_next_dist_shared_lib_no-fallback-error_external_59b92b38.js")
-R.c("server/chunks/ssr/f442c_ae34c162._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__e6a4d965._.js")
-R.c("server/chunks/ssr/f442c_next_6de64d3a._.js")
-R.m("[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/dist/esm/build/templates/pages.js { INNER_PAGE => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/error.js [ssr] (ecmascript)\", INNER_DOCUMENT => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/document.js [ssr] (ecmascript)\", INNER_APP => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/app.js [ssr] (ecmascript)\" } [ssr] (ecmascript)")
-module.exports=R.m("[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/dist/esm/build/templates/pages.js { INNER_PAGE => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/error.js [ssr] (ecmascript)\", INNER_DOCUMENT => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/document.js [ssr] (ecmascript)\", INNER_APP => \"[project]/Downloads/v0-corporate-website-build-main/v0-corporate-website-build-main/node_modules/next/app.js [ssr] (ecmascript)\" } [ssr] (ecmascript)").exports

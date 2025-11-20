@@ -34,9 +34,16 @@ export default function AboutPage() {
         {/* Main Content */}
         <div className="container mx-auto px-4 mb-20">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="lg:w-1/2 animate-slide-in">
-              <div className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
-                <Image src="/pexels-cottonbro-7480240.jpg" alt="A V Tech Team" fill className="object-cover" />
+            <div className="w-full lg:w-1/2 animate-slide-in">
+              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/pexels-cottonbro-7480240.jpg" 
+                  alt="A V Tech Team" 
+                  fill 
+                  className="object-cover" 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                  priority
+                />
               </div>
             </div>
 
