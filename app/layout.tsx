@@ -42,6 +42,7 @@ export default function RootLayout({
           as="video"
           href="/12331860_1920_1080_30fps.mp4"
           type="video/mp4"
+          fetchPriority="high"
         />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>

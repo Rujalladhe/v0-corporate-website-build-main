@@ -7,6 +7,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Chatbot } from "@/components/chatbot"
+import { HeroVideo } from "@/components/hero-video"
 
 export default function Home() {
   const keyCapabilities = [
@@ -54,18 +55,7 @@ export default function Home() {
       <main className="flex-1 pt-16">
           {/* Hero Section */}
         <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
-          <div className="absolute inset-0 z-0">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover"
-            >
-              <source src="/12331860_1920_1080_30fps.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <HeroVideo />
           <div className="absolute inset-0 bg-black/60 z-10" />
 
           <div className="container mx-auto px-4 relative z-20 text-center md:text-left">
