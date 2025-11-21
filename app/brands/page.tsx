@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -5,6 +6,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { Chatbot } from "@/components/chatbot"
 import { brandCategories } from "@/lib/data/brands"
 import { Sparkles, Award, Shield, TrendingUp } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function BrandsPage() {
   return (
@@ -161,9 +163,13 @@ export default function BrandsPage() {
                 <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                   Let's discuss how our premium brand partnerships can elevate your industrial automation projects.
                 </p>
-                <button className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-xl">
-                  Contact Our Team
-                </button>
+                <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-gray-100 text-lg px-10 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              <Link href="/contact">Get in Touch</Link>
+            </Button>
               </div>
             </div>
           </div>

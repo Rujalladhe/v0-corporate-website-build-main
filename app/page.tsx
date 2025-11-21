@@ -53,13 +53,14 @@ export default function Home() {
 
       <main className="flex-1 pt-16">
           {/* Hero Section */}
-          <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
+        <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
           <div className="absolute inset-0 z-0">
             <video
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
             >
               <source src="/12331860_1920_1080_30fps.mp4" type="video/mp4" />
@@ -69,6 +70,7 @@ export default function Home() {
 
           <div className="container mx-auto px-4 relative z-20 text-center md:text-left">
             <div className="max-w-3xl animate-fade-in">
+...
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
                 Powering Industries With <span className="text-primary">Automation</span>, Control & Engineering
                 Excellence
@@ -174,43 +176,64 @@ export default function Home() {
         </section>
 
         {/* Brand Logos Carousel */}
-        <section className="py-16 bg-gray-50 overflow-hidden">
+         {/* Brand Logos Carousel */}
+        {/* Brand Logos Carousel */}
+        {/* Brand Logos Carousel */}
+          {/* Brand Logos Carousel */}
+          <section className="py-16 bg-gray-50 overflow-hidden">
           <div className="container mx-auto px-4 mb-10 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Trusted Brands We Work With</h2>
           </div>
 
-          <div className="relative w-full overflow-hidden">
-            <div className="flex animate-scroll whitespace-nowrap">
+          <div className="relative w-full overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing">
+            <div className="flex whitespace-nowrap animate-[scroll_10s_linear_infinite] md:animate-[scroll_20s_linear_infinite]">
               {/* First set of logos */}
-              <div className="flex gap-12 px-6 items-center">
+              <div className="flex gap-8 md:gap-12 px-4 md:px-6 items-center">
                 {brandLogos.map((logo) => (
                   <div
                     key={`brand-1-${logo.id}`}
-                    className="flex flex-col items-center justify-center w-32 h-20 0 transition-all duration-10000 "
+                    className="flex flex-col items-center justify-center w-24 md:w-32 h-16 md:h-20 flex-shrink-0"
                   >
                     <Image
                       src={`/logos/${logo.filename}`}
                       alt={logo.alt}
                       width={160}
                       height={96}
-                      className="max-h-20 w-auto object-contain"
+                      className="max-h-16 md:max-h-20 w-auto object-contain"
                     />
                   </div>
                 ))}
               </div>
               {/* Duplicate set for seamless scrolling */}
-              <div className="flex gap-12 px-6 items-center">
+              <div className="flex gap-8 md:gap-12 px-4 md:px-6 items-center">
                 {brandLogos.map((logo) => (
                   <div
                     key={`brand-2-${logo.id}`}
-                    className="flex flex-col items-center justify-center w-32 h-20 transition-all duration-10000"
+                    className="flex flex-col items-center justify-center w-24 md:w-32 h-16 md:h-20 flex-shrink-0"
                   >
                     <Image
                       src={`/logos/${logo.filename}`}
                       alt={logo.alt}
                       width={160}
                       height={96}
-                      className="max-h-20 w-auto object-contain"
+                      className="max-h-16 md:max-h-20 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+              {/* Third set for extra smooth scrolling on mobile */}
+              <div className="flex gap-8 md:gap-12 px-4 md:px-6 items-center md:hidden">
+                {brandLogos.map((logo) => (
+                  <div
+                    key={`brand-3-${logo.id}`}
+                    className="flex flex-col items-center justify-center w-24 h-16 flex-shrink-0"
+                  >
+                    <Image
+                      src={`/logos/${logo.filename}`}
+                      alt={logo.alt}
+                      width={160}
+                      height={96}
+                      className="max-h-16 w-auto object-contain"
                     />
                   </div>
                 ))}
@@ -218,7 +241,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* CTA Section */}
         <section className="py-20 bg-primary text-white text-center">
           <div className="container mx-auto px-4">

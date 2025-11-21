@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -68,14 +69,18 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-primary text-white p-2 rounded-lg font-bold text-xl group-hover:bg-primary/90 transition-colors">
-              AV
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="h-12 w-16 rounded-xl overflow-hidden  bg-white">
+              <Image
+                src="/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg"
+                alt="A V Tech logo"
+                width={96}
+                height={96}
+                priority
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl leading-none text-gray-900">A V TECH</span>
-              <span className="text-[10px] text-gray-500 font-medium tracking-wider">AUTOMATION SYSTEMS</span>
-            </div>
+            <span className="sr-only">A V Tech Automation Systems</span>
           </Link>
 
           {/* Desktop Navigation */}

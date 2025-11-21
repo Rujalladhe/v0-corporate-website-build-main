@@ -220,7 +220,7 @@ export default function ContactPage() {
           {/* Map */}
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-xl animate-fade-in">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.667847934568!2d73.7606!3d19.9975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU5JzUxLjAiTiA3M8KwNDUnMzguMiJF!5e0!3m2!1sen!2sin!4v1625123456789!5m2!1sen!2sin&basemap=satellite"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3749.9494080072427!2d73.73449727522816!3d19.968629781428525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDU4JzA3LjEiTiA3M8KwNDQnMTMuNSJF!5e0!3m2!1sen!2sin!4v1763737158187!5m2!1sen!2sin"
 
               width="100%"
               height="100%"

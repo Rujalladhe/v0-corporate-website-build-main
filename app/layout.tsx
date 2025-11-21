@@ -20,19 +20,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg',
+        sizes: '192x192',
+        type: 'image/jpeg',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg',
   },
 }
 
@@ -42,7 +35,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          as="video"
+          href="/12331860_1920_1080_30fps.mp4"
+          type="video/mp4"
+        />
+      </head>
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
         <DownloadBrochure />

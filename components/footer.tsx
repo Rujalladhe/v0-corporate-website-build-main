@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Phone, Mail, MapPin,  } from "lucide-react"
 import { companyInfo } from "@/lib/data/company"
 
@@ -9,12 +10,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-primary text-white p-2 rounded-lg font-bold text-xl">AV</div>
-              <div className="flex flex-col">
-                <span className="font-bold text-xl leading-none">A V TECH</span>
-                <span className="text-[10px] text-gray-400 font-medium tracking-wider">AUTOMATION SYSTEMS</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-14 w-17 rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+                <Image
+                  src="/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg"
+                  alt="A V Tech logo"
+                  width={140}
+                  height={120}
+                  className="h-full w-full object-cover"
+                />
               </div>
+              <span className="sr-only">A V Tech Automation Systems</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">{companyInfo.description}</p>
             <div className="flex gap-4">
