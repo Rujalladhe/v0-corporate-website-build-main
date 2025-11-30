@@ -21,7 +21,7 @@ export const products: Product[] = [
     shortDescription: "Used in industrial power distribution. Offers simple operation and low maintenance.",
     fullDescription:
       "Motor Control Center (MCC) panels are used for power distribution and motor control in industries. They are designed to house starters, relays, and breakers in a modular fashion.",
-    image: "/industrial-motor-control-center-panel.jpg",
+    image: "/mcc.jpg",
     features: [
       "Houses starters, relays, breakers",
       "Modular design",
@@ -39,7 +39,7 @@ export const products: Product[] = [
     shortDescription: "Controls major power distribution with high reliability and safety.",
     fullDescription:
       "Power Control Center (PCC) panels are the heart of any electrical system, controlling major power distribution with high reliability and safety standards.",
-    image: "/power-control-center-electrical-panel.jpg",
+    image: "/pcc.jpg",
     features: ["Handles high loads", "Long working life", "No maintenance", "Robust and safe"],
     applications: ["Manufacturing industries", "Automotive", "Refineries", "Engineering units"],
     compatibleBrands: ["Siemens", "ABB", "L&T", "Schneider"],
@@ -52,7 +52,7 @@ export const products: Product[] = [
     shortDescription: "Professional automation panels with PLC logic control for complex industrial processes.",
     fullDescription:
       "Programmable Logic Controller (PLC) panels are the brain of automation systems, providing precise control over machinery and processes through programmable logic.",
-    image: "/plc-automation-control-panel.jpg",
+    image: "/plc.jpg",
     features: [
       "High-speed processing",
       "Industrial automation ready",
@@ -70,7 +70,7 @@ export const products: Product[] = [
     shortDescription: "Controls AC motor speed and torque with high efficiency and energy savings.",
     fullDescription:
       "Variable Frequency Drive (VFD) panels are used to control the speed and torque of AC motors by varying the input frequency and voltage, resulting in significant energy savings.",
-    image: "/variable-frequency-drive-vfd-panel.jpg",
+    image: "/vfd.jpg",
     features: [
       "Energy efficient",
       "User-adjustable frequency",
@@ -88,7 +88,7 @@ export const products: Product[] = [
     shortDescription: "Maintains power factor close to unity, reducing electricity bills and penalties.",
     fullDescription:
       "Automatic Power Factor Correction (APFC) panels automatically switch capacitor banks to maintain the power factor close to unity, reducing electricity bills and penalties.",
-    image: "/automatic-power-factor-correction-apfc-panel.jpg",
+    image: "/apfc.jpg",
     features: ["Auto capacitor bank switching", "Reduces penalties", "Saves energy", "Improves system stability"],
     applications: ["Industries", "Commercial complexes", "Hospitals", "Hotels"],
     compatibleBrands: ["L&T", "Epcos", "Schneider", "Siemens"],

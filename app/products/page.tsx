@@ -89,99 +89,106 @@ export default function ProductsPage() {
       </main>
 
       {/* Product Popup Modal */}
-      <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0">
-          <div className="sticky top-0 z-10 flex justify-end p-4 bg-transparent pointer-events-none">
-            <DialogClose className="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-sm pointer-events-auto">
+  {/* Product Popup Modal */}
+  <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
+        {/* Changed max-w-4xl to max-w-6xl for a wider, horizontal rectangle */}
+        <DialogContent className="max-w-6xl w-[95vw] max-h-[90vh] overflow-hidden p-0 gap-0 flex flex-col md:flex-row bg-white">
+          
+          <div className="absolute top-0 right-0 z-20 flex justify-end p-4 pointer-events-none">
+            <DialogClose className="bg-white/80 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-sm pointer-events-auto border border-gray-100">
               <X className="h-5 w-5 text-gray-500" />
               <span className="sr-only">Close</span>
             </DialogClose>
           </div>
 
           {selectedProduct && (
-            <div className="flex flex-col md:flex-row">
-              {/* Image Section */}
-              <div className="w-full md:w-2/5 relative h-64 md:h-auto bg-gray-100">
+            <div className="flex flex-col md:flex-row w-full h-full overflow-hidden">
+              
+              {/* Image Section - Changed width to 1/2 and used object-contain */}
+              <div className="w-full md:w-1/2 relative h-64 md:h-auto bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100 flex items-center justify-center p-6">
                 <Image
                   src={selectedProduct.image || "/placeholder.svg"}
                   alt={selectedProduct.name}
                   fill
-                  className="object-cover"
+                  // 'object-contain' ensures the WHOLE image is seen without cropping
+                  className="object-contain p-4" 
                 />
               </div>
 
-              {/* Content Section */}
-              <div className="w-full md:w-3/5 p-6 md:p-8 bg-white">
-                <DialogHeader className="mb-6">
-                  <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    {selectedProduct.name}
-                  </DialogTitle>
-                  <DialogDescription className="text-base text-gray-600">
-                    {selectedProduct.fullDescription}
-                  </DialogDescription>
-                </DialogHeader>
+              {/* Content Section - Changed width to 1/2 */}
+              <div className="w-full md:w-1/2 bg-white overflow-y-auto max-h-[60vh] md:max-h-[85vh]">
+                <div className="p-6 md:p-10">
+                  <DialogHeader className="mb-6">
+                    <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 pr-8">
+                      {selectedProduct.name}
+                    </DialogTitle>
+                    <DialogDescription className="text-base text-gray-600">
+                      {selectedProduct.fullDescription}
+                    </DialogDescription>
+                  </DialogHeader>
 
-                <div className="space-y-6">
-                  {/* Features */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <div className="w-1 h-6 bg-primary rounded-full"></div>
-                      Key Features
-                    </h3>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {selectedProduct.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                          <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Applications */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <div className="w-1 h-6 bg-primary rounded-full"></div>
-                      Applications
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProduct.applications.map((app, idx) => (
-                        <Badge key={idx} variant="secondary" className="bg-gray-100 text-gray-700 hover:bg-gray-200">
-                          {app}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Compatible Brands */}
-                  {selectedProduct.compatibleBrands && (
+                  <div className="space-y-8">
+                    {/* Features */}
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <div className="w-1 h-6 bg-primary rounded-full"></div>
-                        Compatible Brands
+                        Key Features
+                      </h3>
+                      <ul className="grid grid-cols-1 gap-3">
+                        {selectedProduct.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-sm text-gray-600 bg-gray-50 p-2 rounded-lg">
+                            <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Applications */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <div className="w-1 h-6 bg-primary rounded-full"></div>
+                        Applications
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {selectedProduct.compatibleBrands.map((brand, idx) => (
-                          <Badge key={idx} variant="outline" className="border-primary/30 text-primary">
-                            {brand}
+                        {selectedProduct.applications.map((app, idx) => (
+                          <Badge key={idx} variant="secondary" className="px-3 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
+                            {app}
                           </Badge>
                         ))}
                       </div>
                     </div>
-                  )}
 
-                  <div className="pt-6 border-t border-gray-100">
-                    <Button
-                      className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white"
-                      onClick={() => {
-                        const message = encodeURIComponent(
-                          `Hi, I'm interested in ${selectedProduct.name}. Can you provide more details?`,
-                        )
-                        window.open(`https://wa.me/919595912555?text=${message}`, "_blank")
-                      }}
-                    >
-                      Enquire Now via WhatsApp
-                    </Button>
+                    {/* Compatible Brands */}
+                    {selectedProduct.compatibleBrands && (
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                          <div className="w-1 h-6 bg-primary rounded-full"></div>
+                          Compatible Brands
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProduct.compatibleBrands.map((brand, idx) => (
+                            <Badge key={idx} variant="outline" className="px-3 py-1 border-primary/30 text-primary text-sm">
+                              {brand}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="pt-6 border-t border-gray-100 sticky bottom-0 bg-white pb-2">
+                      <Button
+                        className="w-50 bg-primary hover:bg-primary/90 text-white h-12 text-sm shadow-lg shadow-primary/20"
+                        onClick={() => {
+                          const message = encodeURIComponent(
+                            `Hi, I'm interested in ${selectedProduct.name}. Can you provide more details?`,
+                          )
+                          window.open(`https://wa.me/919595912555?text=${message}`, "_blank")
+                        }}
+                      >
+                        Enquire Now via WhatsApp
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
