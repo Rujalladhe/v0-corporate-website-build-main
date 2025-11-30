@@ -89,20 +89,43 @@ export function Chatbot() {
     // Safe companyInfo values
     const phone = companyInfo?.contact?.phone ?? "Not available"
     const email = companyInfo?.contact?.emails?.[0] ?? "Not available"
-    const office = companyInfo?.address?.office ?? "Office address not available"
-    const factory = companyInfo?.address?.factory ?? "Factory address not available"
+    
+    // Format office address
+    const officeAddr = companyInfo?.addresses?.office
+    const office = officeAddr 
+      ? `${officeAddr.line1}, ${officeAddr.line2}, ${officeAddr.city} - ${officeAddr.pincode}`
+      : "Office address not available"
+    
+    // Format factory/works address
+    const factoryAddr = companyInfo?.addresses?.works
+    const factory = factoryAddr
+      ? `${factoryAddr.line1}, ${factoryAddr.line2}, ${factoryAddr.city} - ${factoryAddr.pincode}`
+      : "Factory address not available"
 
     // -------------------------------------------------------------
-    // 1) NUMBER-BASED PRODUCT ACCESS  (e.g., 1,2,3,4...)
+    // 1) NUMBER-BASED ACCESS (Products or Services)
+    // Check services first if number is within services range, then products
     // -------------------------------------------------------------
     if (/^\d+$/.test(lower)) {
-      const index = parseInt(lower) - 1
-      if (products[index]) {
+      const num = parseInt(lower)
+      const index = num - 1
+      
+      // Check services first if number is within services range (1 to services.length)
+      if (num >= 1 && num <= services.length && services[index]) {
+        const s = services[index]
+        return `🛠 **${s.name}**\n\n${s.description}`
+      }
+      
+      // Then check products
+      if (num >= 1 && num <= products.length && products[index]) {
         const p = products[index]
         return `🟦 **${p.name}**\n\n${p.fullDescription}\n\n**Features:**\n• ${p.features.join(
           "\n• "
         )}\n\n**Applications:**\n• ${p.applications.join("\n• ")}`
       }
+      
+      // If number doesn't match anything
+      return `I couldn't find item number ${lower}. Please ask for "products" or "services" to see the list, then type the number.`
     }
 
     // -------------------------------------------------------------
@@ -111,8 +134,7 @@ export function Chatbot() {
     const productMatch = products.find(
       (p) =>
         lower.includes(p.name.toLowerCase()) ||
-        lower.includes(p.name.toLowerCase().split(" ")[0]) ||
-        (p.keywords && p.keywords.some((k) => lower.includes(k)))
+        lower.includes(p.name.toLowerCase().split(" ")[0])
     )
 
     if (productMatch) {
@@ -148,7 +170,7 @@ export function Chatbot() {
       return (
         "Here are our services:\n\n" +
         services.map((s, i) => `${i + 1}. ${s.name}`).join("\n") +
-        "\n\nType the service name or number to get full details."
+        "\n\nType a number like **1**, **2**, **3** to get full details, or type the service name."
       )
     }
 
@@ -159,19 +181,21 @@ export function Chatbot() {
       lower.includes("contact") ||
       lower.includes("email") ||
       lower.includes("phone") ||
-      lower.includes("address")
+      lower.includes("address") ||
+      lower.includes("location")
     ) {
-      return `📍 **A V Tech Contact Information**\n\n**Phone:** ${phone}\n**Email:** ${email}\n\n**Office:** ${office}\n\n**Factory:** ${factory}`
+      return `📍 **A V Tech Contact Information**\n\n**Phone:** ${phone}\n**Email:** ${email}\n\n**Office Address:**\n${office}\n\n**Factory Address:**\n${factory}`
     }
 
     // -------------------------------------------------------------
     // 5) ABOUT COMPANY
     // -------------------------------------------------------------
     if (lower.includes("about") || lower.includes("company")) {
-      return (
-        companyInfo.about ??
-        "A V Tech is a leading manufacturer and system integrator for factory automation, electrical panels, and SPM machines."
-      )
+      const aboutInfo = companyInfo.about
+      if (aboutInfo) {
+        return `${aboutInfo.intro}\n\n${aboutInfo.details}\n\n**Expertise:**\n• ${aboutInfo.expertise.join("\n• ")}`
+      }
+      return "A V Tech is a leading manufacturer and system integrator for factory automation, electrical panels, and SPM machines."
     }
 
     // -------------------------------------------------------------
