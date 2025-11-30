@@ -11,12 +11,12 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-14 w-17 rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <div className="h-20 w-25 rounded-2xl overflow-hidden border border-white/10 bg-white/5">
                 <Image
                   src="/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg"
                   alt="A V Tech logo"
-                  width={140}
-                  height={120}
+                  width={160}
+                  height={150}
                   className="h-full w-full object-cover"
                 />
               </div>

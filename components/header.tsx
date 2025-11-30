@@ -16,7 +16,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+      setIsScrolled(window.scrolly > 10)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -38,76 +38,73 @@ export function Header() {
         isScrolled ? "bg-white/95 backdrop-blur-md shadow-md py-2" : "bg-white py-4",
       )}
     >
-      {/* Top Bar - Hidden on mobile when scrolled */}
-      <div
-        className={cn(
-          "container mx-auto px-4 mb-2 hidden md:flex justify-between items-center text-sm text-gray-600 transition-all duration-300",
-          isScrolled ? "h-0 opacity-0 overflow-hidden mb-0" : "h-auto opacity-100",
-        )}
-      >
-        <div className="flex items-center gap-6">
-          <a
-            href={`tel:${companyInfo.contact.phone}`}
-            className="flex items-center gap-2 hover:text-primary transition-colors"
-          >
-            <Phone className="h-4 w-4" />
-            <span>{companyInfo.contact.phone}</span>
-          </a>
-          <a
-            href={`mailto:${companyInfo.contact.emails[0]}`}
-            className="flex items-center gap-2 hover:text-primary transition-colors"
-          >
-            <Mail className="h-4 w-4" />
-            <span>{companyInfo.contact.emails[0]}</span>
-          </a>
-        </div>
-        <div className="flex items-center gap-4">
-          <span>ISO 9001:2015 Certified</span>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="h-12 w-16 rounded-xl overflow-hidden  bg-white">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+            <div className="h-16 w-20 rounded-xl overflow-hidden bg-white">
               <Image
                 src="/logos/WhatsApp%20Image%202025-11-21%20at%2019.45.50_779474a4.jpg"
                 alt="A V Tech logo"
-                width={96}
-                height={96}
+                width={80}
+                height={64}
                 priority
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <span className="sr-only">A V Tech Automation Systems</span>
           </Link>
+          
+          {/* Contact Info - Hidden on mobile */}
+          <div className="hidden lg:flex items-center gap-6 text-sm text-gray-600">
+            <a
+              href={`tel:${companyInfo.contact.phone}`}
+              className="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              <span>{companyInfo.contact.phone}</span>
+            </a>
+            <a
+              href={`mailto:${companyInfo.contact.emails[0]}`}
+              className="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              <span>{companyInfo.contact.emails[0]}</span>
+            </a>
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative py-2",
-                  pathname === link.href
-                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
-                    : "text-gray-600",
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-              <Link href="/contact">Get Quote</Link>
-            </Button>
-          </nav>
+          {/* ISO Certification and Navigation */}
+          <div className="flex items-center gap-40 flex-1 justify-end">
+            {/* ISO Certification - Hidden on mobile */}
+            <div className="hidden lg:flex items-center">
+              <span className="text-sm text-gray-600">ISO 9001:2015 Certified</span>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 text-gray-600" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary relative py-2",
+                    pathname === link.href
+                      ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary"
+                      : "text-gray-600",
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
+                <Link href="/contact">Get Quote</Link>
+              </Button>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button className="md:hidden p-2 text-gray-600" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </div>
 
