@@ -249,6 +249,7 @@ export function Chatbot() {
         {/* Messages */}
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 bg-gray-50">
           <div className="space-y-4">
+            
             {messages.map((msg) => (
               <div
                 key={msg.id}
